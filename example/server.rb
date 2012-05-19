@@ -8,7 +8,7 @@ loop do
   Thread.start(server.accept) do |client|
     puts "log: Connection from #{client.peeraddr[2]} at #{client.peeraddr[3]}"
     while input = client.gets
-      puts input
+      puts "#{input.strip} from #{client.object_id}"
       if input.include?('ping')
         client.puts("pong\r\n")
       end
